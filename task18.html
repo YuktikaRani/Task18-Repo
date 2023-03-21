@@ -1,0 +1,399 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="header">
+               <div class="progressbar" id="progress"> </div>
+               <div class="icon">
+                 <div><i class="fa fa-user"></i></div>
+                 <div><i class="fa fa-envelope"></i></div>
+                 <div><i class="fa fa-key"></i></div>
+                </div>
+            </div>
+
+             <form id="form1" name="form1" onsubmit="return validate()">
+                <div class="form-field">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" placeholder="First Name" onfocusin="validate()" onfocusout="noFnameValidation()">
+                    <span id="fnames"></span>
+                </div>
+                <div class="form-field">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" placeholder="Last Name" onfocusin="validate()" onfocusout="noLnameValidation()">
+                    <span id="lnames"></span>
+                </div>
+                <div class="form-field">
+                    <label for="age">Age</label>
+                    <input type="text" id="age" placeholder="Age" onfocusin="validate()" onfocusout="noAgeValidation()">
+                    <span id="ages"></span>
+                </div>
+                <div class="form-field">
+                    <label for="gender">Gender</label>
+                    <input type="radio" name="gender" checked>
+                    <input type="radio" name="gender">
+                </div>
+                <div class="btn">
+                    <button type="button" id="next1" onclick="validate()">Next</button>
+                </div>
+             </form>
+
+             
+             
+             <form id="form2" name="form2" onsubmit="return secondValidate()">
+                <div class="form-field">
+                    <label for="fname">Email-id</label>
+                    <input type="email" id="email" placeholder="Emailid" onfocusin="secondValidate()" onfocusout="noEmailValidation()">
+                    <span id="emails"></span>
+                </div>
+                <div class="form-field">
+                    <label for="lname">Mobile no</label>
+                    <input type="text" id="mobileno" placeholder="Mobile no" onfocusin="secondValidate()"  onfocusout="noMobileValidation()">
+                    <span id="mobilenos"></span>
+                </div>
+                
+                <div class="btn">
+                    <button type="button" id="prev1">Previous </button>
+                    <button type="button" id="next2" onclick="secondValidate()">Next</button>
+                </div>
+             </form>
+            
+            
+             <form id="form3" name="form3" onsubmit="return thirdValidate()">
+                <div class="form-field">
+                    <label for="password">New Password</label>
+                    <input type="password" id="password" placeholder="New Password" onfocusin="thirdValidate()" onfocusout="noPasswordValidation()">
+                    <span id="passwords"></span>
+                </div>
+                <div class="form-field">
+                    <label for="cpassword">Confirm Password</label>
+                    <input type="password" id="cpassword" placeholder="Confirm Password" onfocusin="thirdValidate()" onfocusout="noCpasswordValidation()">
+                    <span id="cpasswords"></span>
+                </div>
+                <div class="btn">
+                    <button type="button" id="prev2">Previous </button>
+                    <button type="button" id="submit" onclick="thirdValidate()">Submit</button>
+                </div>
+             </form>       
+        </div>
+
+
+    <script>
+
+
+       document.getElementById('form1').onsubmit=function(){
+        e.preventDefault();
+       }
+        var valid=true;
+        function validate(){
+            debugger
+            var fname=document.getElementById('fname').value;
+            var lname=document.getElementById('lname').value;
+            var age=document.getElementById('age').value;
+          
+
+            /***First name Validation***/
+            if(fname==""){
+                document.getElementById('fnames').innerHTML="Please enter first name";
+                document.getElementById('fnames').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            }
+
+            /***Last Name Validation***/
+            if(lname==""){
+                document.getElementById('lnames').innerHTML="Please enter last name";
+                document.getElementById('lnames').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid=true;
+            }
+
+            /***Age Validation***/
+
+            if (isNaN(age) || age < 10 || age > 100){ 
+                    document.getElementById('ages').innerHTML="Please enter the age";
+                    document.getElementById('ages').style.color="red";
+                    valid=false;
+                    return false;
+                 }
+                 else{
+                      nextEmailPage();
+                      return true;
+                 }
+            
+            if(age==""){
+                document.getElementById('ages').innerHTML="Please enter the age";
+                document.getElementById('ages').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                nextEmailPage();
+                return true;
+            }
+
+                 
+            return false;
+        }
+
+
+
+        function secondValidate(){
+            debugger
+            var email=document.getElementById('email').value;
+            var mobileno=document.getElementById('mobileno').value;
+            var validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            /***Email Validation***/
+            if(email==""){
+                document.getElementById('emails').innerHTML="Please enter the emailid";
+                document.getElementById('emails').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            }
+
+
+
+            if(!email.match(validEmail)){
+                document.getElementById('emails').innerHTML="Please enter the emailid";
+                document.getElementById('emails').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            }
+            /***Mobile Validation***/
+
+
+            if(mobileno==""){
+                document.getElementById('mobilenos').innerHTML="Please enter the mobileno";
+                document.getElementById('mobilenos').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                nextPasswordPage();
+                valid= true;
+            } 
+            return false;
+        }
+
+    /*******Third Form Validation Function*******/
+        function thirdValidate(){
+            debugger
+            var password=document.getElementById('password').value;
+            var cpassword=document.getElementById('cpassword').value;
+            if(password==""){
+                document.getElementById('passwords').innerHTML="Please enter the password";
+                document.getElementById('passwords').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            } 
+ 
+            if(password.length<8 || password.length>15){
+                document.getElementById('passwords').innerHTML="Password must be 8-16 characters";
+                document.getElementById('passwords').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            }
+
+            if(cpassword!=password){
+                document.getElementById('cpasswords').innerHTML="Please enter the same password";
+                document.getElementById('cpasswords').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            } 
+            if(cpassword==""){
+                document.getElementById('cpasswords').innerHTML="Please enter the confirm password";
+                document.getElementById('cpasswords').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            } 
+
+            if(cpassword!=password){
+                document.getElementById('cpasswords').innerHTML="Please enter the same password";
+                document.getElementById('cpasswords').style.color="red";
+                valid=false;
+                return false;
+            }
+            else{
+                valid= true;
+            } 
+
+
+            if(valid){
+                displayDetails();
+               /**** window.location.href="home.html";****/
+            }
+
+
+            return false;
+        }
+
+        /****RemoveValidation function****/
+
+        function noFnameValidation(){
+            document.getElementById('fnames').style.display="none";
+        }
+
+        function noLnameValidation(){
+            document.getElementById('lnames').style.display="none";
+        }
+
+        function noEmailValidation(){
+            document.getElementById('emails').style.display="none";
+        }
+
+        function noAgeValidation(){
+            document.getElementById('ages').style.display="none";
+        }
+        function noMobileValidation(){
+            document.getElementById('mobilenos').style.display="none";
+        }
+
+        function noPasswordValidation(){
+            document.getElementById('passwords').style.display="none";
+        }
+
+        function noCpasswordValidation(){
+            document.getElementById('cpasswords').style.display="none";
+        }
+
+
+
+        var form1=document.getElementById('form1');
+        var form2=document.getElementById('form2');
+        var form3=document.getElementById('form3');
+        var prev1=document.getElementById('prev1');
+        var prev2=document.getElementById('prev2');
+        var next1=document.getElementById('next1').value;
+        var next2=document.getElementById('next2').value;
+        var progress=document.getElementById('progress');
+
+        /*****First Next function*****/
+        if(valid){
+        next1.onclick=function(){
+            nextEmailPage();
+        }
+      }
+        function nextEmailPage(){
+          form1.style.display="none";
+          form2.style.display="block";
+          form3.style.display="none";
+          progress.style.width="67%";
+        }
+
+       /*****Second Next function*****/
+
+        if(valid){
+            next2.onclick=function(){
+            nextPasswordPage();
+          }
+        }
+        function nextPasswordPage(){
+          form1.style.display="none";
+          form2.style.display="none";
+          form3.style.display="block";
+          progress.style.width="100%";
+        }
+
+
+       /****First Previous function****/
+        prev1.onclick=function(){
+            debugger
+            firstPage();
+        }
+
+        function firstPage(){
+            form1.style.display="block";
+            form2.style.display="none";
+            form3.style.display="none";
+            progress.style.width="33.33%";
+        }
+
+        /****Second Previous Function******/
+        prev2.onclick=function(){
+            nextEmailPage();
+        }
+
+
+
+
+        function displayDetails(){
+            debugger
+            var fname=document.getElementById('fname').value;
+            var lname=document.getElementById('lname').value;
+            var age=document.getElementById('age').value;
+            var email=document.getElementById('email').value;
+            var mobileno=document.getElementById('mobileno').value;
+            var password=document.getElementById('password').value;
+            var cpassword=document.getElementById('cpassword').value;
+        
+            document.write("First Name: "+     fname+"<br>"+"<br>");
+            document.write("Last Name: "+     lname+"<br>"+"<br>");
+            document.write("Age: "+     age+"<br>"+"<br>");
+            document.write("Emailid: "+     email+"<br>"+"<br>");
+            document.write("Mobile no: "+    mobileno+"<br>"+"<br>");
+            document.write("Password: "+    password+"<br>"+"<br>");
+            document.write("Confirm Password: "+    cpassword+"<br>"+"<br>");
+
+            var btn=document.createElement("button");
+             btn.innerHTML="Back";
+             btn.type = "submit";
+             document.body.appendChild(btn);
+            
+             btn.onclick=function(){
+                window.location.href="task18.html";
+             }
+
+             btn.style.backgroundColor="#3e8a3e";
+             btn.style.color="white";
+             btn.style.margin="28px auto auto 120px";
+             btn.style.padding="8px";
+             btn.style.border="none";
+             btn.style.borderRadius="15px";
+             btn.style.width="6em";
+                
+            document.body.style.backgroundColor="white";
+            document.body.style.color="rgb(36, 36, 170)";
+            document.body.style.margin="auto";
+            document.body.style.marginTop="100px";
+            document.body.style.marginLeft="400px";
+            document.body.style.boxShadow="2px 2px 10px 2px lightblue";
+            document.body.style.padding="20px";
+            document.body.style.fontSize="16px";
+            document.body.style.fontFamily="Arial";
+            document.body.style.width="350px";
+            document.body.style.height="245px";
+            
+        }
+      
+    </script>
+    </body>
+</html>

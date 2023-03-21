@@ -1,0 +1,110 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:arial;
+}
+span{
+    padding-left: 35px;
+    padding-top: 3px;
+    font-size: 14px;
+}
+.form-field{
+   align-items: center;
+   margin: 25px auto auto auto;
+}
+input[type=text],input[type=email],input[type=password]{
+    width:80%;
+    margin:0 10% 0 10%;
+    height:30px;
+    border-top:none;
+    border-right: none;
+    border-left:none;
+    border-bottom: 1px solid rgb(152, 152, 152);
+}
+label{
+    margin: auto auto auto 10%;
+    align-items: center;
+    font-size: 15px;
+}
+input[type=text]:focus,input[type=email]:focus,input[type=password]:focus{
+    border:none;
+    outline: none;
+    box-shadow: 2px 2px 2px 1px rgb(193, 223, 233);
+}
+.form-header{
+    margin:auto;
+    text-align: center;
+    padding:18px;
+}
+input[type=radio]{
+    margin:10px auto auto 20px;
+}
+.btn{
+  margin: 10% 18%;
+  align-items: center;
+  padding-bottom: 10%;
+}
+button{
+    padding:10px;
+    width:76px;
+    margin-left: 10px;
+    border-radius: 20px;
+    color:white;
+    font-size: 13px;
+    background-color:#368936;
+    border:none;
+}
+.container{
+    height:410px !important;
+    width:350px;
+    margin: 80px auto auto auto;
+    box-shadow: 2px 2px 15px 1px lightblue;
+    overflow: hidden;
+    border-radius: 20px;
+}
+#form2,#form3{
+    padding-top:40px;
+}
+#form1 button{
+  margin: -5% 20% 20% 25%;
+  width:8em;
+}
+.progressbar{
+    height:50px;
+    width:33.33%;
+    box-shadow: 2px 2px 2px 2px rgb(187, 231, 251);
+    background-color: rgb(37, 133, 162);
+    transition: 1s;
+}
+.icon div{
+   width:33.33%;
+   align-items: center;
+   float: left;
+   margin-top: -28px;
+}
+i{
+    height:20px;
+    width:20px;
+    margin: auto 20%;  
+    transform: scale(1.5,1.5);
+    color:rgb(8, 73, 89);
+}
+.icon{
+    display: flex;
+    height:20px;
+}
+.icon i:first-child{
+    padding-left: 20px;
+}
+#form1{
+margin-top: -25px;
+}
+.content{
+    border-bottom: 2px solid black;
+    text-align: center;
+    margin: auto;
+}
+h4{
+    margin-left:500px;
+}
